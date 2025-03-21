@@ -1,4 +1,12 @@
 <?php
+
+/* 
+Testa se a navegação da página inicial para a página de produtos está funcionando corretamente.
+
+Este teste foi criado ao identificar que os links de navegação na página inicial não estavam 
+funcionando corretamente. O teste verifica se a página de produtos é carregada corretamente e 
+se o produto esperado está presente na resposta.
+*/
 namespace Tests\Feature\Product;
 
 use Tests\TestCase;
