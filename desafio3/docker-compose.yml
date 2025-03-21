@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: desafio_proesc_app
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=desafio_proesc
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+    depends_on:
+      - db
+    networks:
+      - desafio_network
+
+  db:
+    image: postgres:10
+    container_name: desafio_proesc_db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=desafio_proesc
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - desafio_network
+
+networks:
+  desafio_network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
