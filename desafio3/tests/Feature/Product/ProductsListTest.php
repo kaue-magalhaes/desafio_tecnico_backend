@@ -43,4 +43,28 @@ class ProductsListTest extends TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('Product 1', $response->getContent());
     }
+
+    /**
+     * Test the products list page shows the related category name.
+     *
+     * @return void
+     */
+    public function testProductsListShowsRelatedCategoryName()
+    {
+        $category = factory(Category::class)->create([
+            'name' => 'Category 1',
+        ]);
+
+        factory(Product::class)->create([
+            'name' => 'Product 1',
+            'description' => 'Description for Product 1',
+            'price' => 100.00,
+            'category_id' => $category->id,
+        ]);
+
+        $response = $this->get(route('products.list'));
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains('Category 1', $response->getContent());
+    }
 }

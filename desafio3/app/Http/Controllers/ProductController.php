@@ -22,8 +22,8 @@ class ProductController extends Controller
 
    public function listar()
    {
-    $produtos = \App\Models\Product::all();
-    return view('produtos', ['produtos' => $produtos] );
+    $produtos = \App\Models\Product::with('category')->get();
+    return view('produtos', ['produtos' => $produtos]);
    }
 
    public function create()
