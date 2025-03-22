@@ -26,6 +26,6 @@ Route::delete('/produtos/{id}/delete', 'ProductController@destroy');
 Route::get('/categorias/listar', 'CategoryController@listar')->name('categories.list');
 Route::get('/categorias/cadastrar', 'CategoryController@create');
 Route::get('/categorias/{id}/edit', 'CategoryController@edit');
-Route::post('/categorias/listar', 'CategoryController@store');
+Route::post('/categorias/listar', 'CategoryController@store')->name('categories.store');
 Route::delete('/categorias/{id}/delete', 'CategoryController@destroy');
 

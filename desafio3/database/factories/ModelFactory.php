@@ -24,7 +24,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
-    $name = $faker->word;
+    $name = $faker->unique()->word . '_' . $faker->unique()->numberBetween(1, 10000);
     return [
         'name' => $name,
         'slug' => str_slug($name),

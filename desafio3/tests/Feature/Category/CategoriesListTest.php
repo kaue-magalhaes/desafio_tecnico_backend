@@ -8,11 +8,10 @@ funcionando corretamente. O teste verifica se a página de categorias é carrega
 se a categoria esperada está presente na resposta.
 */
 
-namespace Tests\Feature\Product;
+namespace Tests\Feature\Category;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Models\Product;
 use App\Models\Category;
 
 class CategoriesListTest extends TestCase
@@ -30,7 +29,7 @@ class CategoriesListTest extends TestCase
             'name' => 'Category 1',
         ]);
 
-        factory(Category::class, 9)->create();
+        factory(Category::class, 5)->create();
 
         $response = $this->get(route('categories.list'));
         

@@ -3,7 +3,10 @@
 @section('conteudo')
 <br>
     <div class="col-8 m-auto">
-      <form name="formCard" id="formCard" method="GET" action="{{url('categorias/listar')}}">
+      <!--
+        Corrigido: O formulário foi corrigido para usar o método POST.
+      -->
+      <form name="formCard" id="formCard" method="POST" action="{{route('categories.store')}}">
       {!! csrf_field() !!}
             <fieldset>
               <legend> Categorias - Cadastrar</legend>
