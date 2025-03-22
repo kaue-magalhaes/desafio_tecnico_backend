@@ -1,5 +1,12 @@
 <?php
 
+/*
+Testa se a criação de categorias está funcionando corretamente.
+
+Este teste foi criado ao identificar que a criação de categorias não estava funcionando corretamente.
+O teste verifica se a página de criação de categorias é carregada corretamente e se a categoria esperada está presente na resposta.
+*/
+
 namespace Tests\Feature\Category;
 
 use Tests\TestCase;
@@ -10,7 +17,7 @@ class CategoriesCreateTest extends TestCase
     use DatabaseMigrations;
 
     /**
-     * 
+     * Test if the category creation page returns a successful response.
      *
      * @return void
      */
