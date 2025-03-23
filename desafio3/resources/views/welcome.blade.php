@@ -89,8 +89,8 @@
                     A mudança para rotas nomeadas resolve o problema de navegação
                     e segue as melhores práticas do Laravel. 
                 -->
-                    <a href="{{ route('products.list') }}">Produtos</a>
-                    <a href="{{ route('categories.list') }}">Categorias</a>
+                    <a href="{{ route('products.index') }}">Produtos</a>
+                    <a href="{{ route('categories.index') }}">Categorias</a>
                 </div>
             </div>
         </div>

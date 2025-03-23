@@ -13,19 +13,19 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 //produtos
-Route::get('/produtos/listar', 'ProductController@listar')->name('products.list');
-Route::get('/produtos/cadastrar', 'ProductController@create');
-Route::post('/produtos/listar', 'ProductController@store');
-Route::get('/produtos/{id}/edit', 'ProductController@edit');
-Route::put('/produtos/{id}/', 'ProductController@update');
-Route::delete('/produtos/{id}/delete', 'ProductController@destroy');
+Route::get('/produtos', 'ProductController@index')->name('products.index');
+Route::get('/produtos/create', 'ProductController@create')->name('products.create');
+Route::post('/produtos', 'ProductController@store')->name('products.store');
+Route::get('/produtos/{id}/edit', 'ProductController@edit')->name('products.edit');
+Route::put('/produtos/{id}', 'ProductController@update')->name('products.update');
+Route::delete('/produtos/{id}', 'ProductController@destroy')->name('products.destroy');
 
 //categorias
-Route::get('/categorias/listar', 'CategoryController@listar')->name('categories.list');
-Route::get('/categorias/cadastrar', 'CategoryController@create');
-Route::get('/categorias/{id}/edit', 'CategoryController@edit');
-Route::post('/categorias/listar', 'CategoryController@store')->name('categories.store');
-Route::delete('/categorias/{id}/delete', 'CategoryController@destroy');
-
+Route::get('/categorias', 'CategoryController@index')->name('categories.index');
+Route::get('/categorias/create', 'CategoryController@create')->name('categories.create');
+Route::post('/categorias', 'CategoryController@store')->name('categories.store');
+Route::get('/categorias/{id}/edit', 'CategoryController@edit')->name('categories.edit');
+Route::put('/categorias/{id}', 'CategoryController@update')->name('categories.update');
+Route::delete('/categorias/{id}', 'CategoryController@destroy')->name('categories.destroy');

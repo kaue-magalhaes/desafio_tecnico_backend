@@ -3,7 +3,7 @@
 @section('conteudo')
 <br>
     <div class="col-8 m-auto">
-            <form name="formEdit" id="formEdit" method="POST" action="{{url('produtos/listar')}}">
+      <form name="formCreate" id="formCreate" method="POST" action="{{ route('products.store') }}">
           {!! csrf_field() !!}
                <legend>Produto - Cadastrar </legend>
                @if(isset($errors) && count($errors)>0)

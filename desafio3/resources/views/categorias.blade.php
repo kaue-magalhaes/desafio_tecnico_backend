@@ -6,7 +6,7 @@
     <div class="categories-container">
         <div class="spaced-contend">
             <h1>Categorias</h1>
-        <a href="{{url('categorias/cadastrar')}}">
+        <a href="{{route('categories.create')}}">
             <button type="button" class="btn btn-success btn-sm">+ Adicionar</button>
         </a>
         </div>
@@ -32,14 +32,14 @@
                             {{isset($category->description) ? $category->description : '-'}}
                         </td>
                         <td scope="row">
-                            <a href="{{url("categorias/$category->id/edit")}}">
+                            <a href="{{ route('categories.edit', $category->id) }}">
                                 <button class="btn btn-info btn-sm">Editar</button>
                             </a>
-                                <form action="/categorias/{{$category->id}}/delete" method="POST">
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                     {!! csrf_field() !!}
                                     {{ method_field('DELETE') }}
-                                    <button type="submit"class="btn btn-danger btn-sm">Deletar</button>
-                                </form>                        
+                                    <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
+                                </form>
                         </td>
                     </tr>
                     </tbody>

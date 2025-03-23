@@ -54,15 +54,15 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div>
-                <a href="{{ url('/') }}" class="navbar-brand">CRUD - Laravel</a>
+                <a href="{{ route('welcome') }}" class="navbar-brand">CRUD - Laravel</a>
             </div>
             <div>
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a href="{{ url('/produtos/listar') }}" class="nav-link">Produtos</a>
+                        <a href="{{ route('products.index') }}" class="nav-link">Produtos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ url('/categorias/listar') }}" class="nav-link">Categorias</a>
+                        <a href="{{ route('categories.index') }}" class="nav-link">Categorias</a>
                     </li>
                 </ul>
             </div>

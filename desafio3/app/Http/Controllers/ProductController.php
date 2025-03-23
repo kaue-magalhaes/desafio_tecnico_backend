@@ -16,57 +16,57 @@ class ProductController extends Controller
 
     public function index()
     {
-     $produtos = \App\Models\Product::all();
-     return view('produtos', ['produtos' => $produtos] );
-    } 
+        $produtos = \App\Models\Product::with('category')->get();
 
-   public function listar()
-   {
-    $produtos = \App\Models\Product::with('category')->get();
-    return view('produtos', ['produtos' => $produtos]);
-   }
+        return view('produtos', ['produtos' => $produtos]);
+    }
 
    public function create()
    {
-    $categories = \App\Models\Category::all();
-    return view('produtos.create', ['categories' => $categories]);
+        $categories = \App\Models\Category::all();
+
+        return view('produtos.create', ['categories' => $categories]);
    }
    public function store(ProductRequest $request)
    {
-       $product= $this->objProduct->create([
-           'name'=>$request->name,
-           'slug'=> str_slug($request->name),
-           'price'=> $request->price,
-           'category_id'=> $request->category_id,
-           'description'=>$request->description
-       ]);
-       if($product){
-           return redirect('produtos/listar');
-       }
+        $product= $this->objProduct->create([
+            'name'=>$request->name,
+            'slug'=> str_slug($request->name),
+            'price'=> $request->price,
+            'category_id'=> $request->category_id,
+            'description'=>$request->description
+        ]);
+
+        if($product){
+            return redirect(route('products.index'))->with('msg', 'Produto criado com sucesso.');
+        }
    }
 
    public function edit($id)
    {
-    $categories = \App\Models\Category::all();
-    $product = $this->objProduct->find($id);
-    return view('produtos.edit', ['categories' => $categories, 'product' => $product]);
+        $categories = \App\Models\Category::all();
+        $product = $this->objProduct->find($id);
+
+        return view('produtos.edit', ['categories' => $categories, 'product' => $product]);
    }
 
    public function update(ProductRequest $request, $id)
    {
-    $this->objProduct->where(['id' => $id])->update([
-        'name'=>$request->name,
-        'slug'=> str_slug($request->name),
-        'price'=> $request->price,
-        'category_id'=> $request->category_id,
-        'description'=>$request->description
-    ]);
-    return redirect('produtos/listar');
+        $this->objProduct->where(['id' => $id])->update([
+            'name'=>$request->name,
+            'slug'=> str_slug($request->name),
+            'price'=> $request->price,
+            'category_id'=> $request->category_id,
+            'description'=>$request->description
+        ]);
+
+        return redirect(route('products.index'))->with('msg', 'Produto atualizado com sucesso.');
    }
 
    public function destroy($id)
    {
-       $product = $this->objProduct->find($id)->delete();
-       return redirect('produtos/listar')->with('msg', 'Categoria excluída com sucesso.');
+        $product = $this->objProduct->find($id)->delete();
+        
+        return redirect(route('products.index'))->with('msg', 'Categoria excluída com sucesso.');
    }
 }
